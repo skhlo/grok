@@ -1,0 +1,6 @@
+{
+  "name": "grok",
+  "version": "1.0.0",
+  "description": "Fast resumable learning branches backed by a global vault.",
+  "skills": "./skills/"
+}
