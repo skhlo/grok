@@ -27,9 +27,18 @@ Only create files that are useful for the topic. `INDEX.md`, `CHECKPOINT.md`, an
 
 When invoked, identify the concept the user wants to understand. Search `/Users/skhl/Vault/grok` before creating anything. Match against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
 
-If one existing topic is clearly the same concept, use it. If several topics may match, show the top matches and ask which one to continue. If none match, create a canonical topic slug when writing is allowed. If a new concept overlaps with an existing one, add `related_topics` metadata instead of duplicating or merging silently.
+If one existing topic is clearly the same concept, use it. If several topics may match, show the top matches and ask which one to continue. If none match, create a canonical topic slug when writing is allowed. If a new concept connects to an existing one, add a `related_topics` edge (see Topic Schema) instead of duplicating or merging silently.
 
 Use one canonical folder per concept. Put alternate names in `aliases` for search.
+
+## Topic Schema
+
+Every topic's `INDEX.md` frontmatter is the single source of truth; the root `INDEX.md` registry is a derived projection of it. Maintain these fields (full spec in [INDEX-FORMAT.md](./INDEX-FORMAT.md)):
+
+- **`type`** — the topic's dominant knowledge nature, from the **closed** set `{concept, how-to, reference, decision}`. Singular. The set does not grow: never coin a new value — if none seems to fit, pick the closest (ADR-0001).
+- **`tags`** — cross-cutting themes for grouping across topics. Curated-open: before tagging, read the tags already in use across the vault and **reuse an existing tag** rather than coin a near-duplicate. If a genuinely new tag is needed, surface it at checkpoint ("new tag `dx` — you already use `devx`; merge or keep?") before writing it.
+- **`description`** — a one-line summary; the registry's glance column. Keep it distinct from `Current Handle` (the richer resume detail).
+- **`related_topics`** — the knowledge graph, as directed labeled edges `{topic, relation}`, `relation ∈ {builds-on, contrasts-with}` (ADR-0002). `builds-on` is a prerequisite (stored once on the dependent topic); `contrasts-with` marks alternatives (stored once, read symmetric). Every `topic` must resolve to an existing topic folder — never point at a non-topic. A connection that is neither a prerequisite nor a contrast is **not** an edge; express it as a shared `tag`.
 
 ## Write Discipline
 
@@ -69,12 +78,13 @@ A checkpoint saves where the user stopped and how to resume. It is not the same 
 
 On confirmed checkpoint:
 
-- Update `INDEX.md`: topic metadata, aliases, status, revisit count, KST timestamps, and lightweight context.
+- Update `INDEX.md`: `type`, `description`, `tags`, `related_topics` edges, aliases, status, revisit count, KST timestamps, and lightweight context.
 - Overwrite `CHECKPOINT.md`: current understanding, stopping point, resume prompt, open loops, and optional retrieval result.
 - Append `HISTORY.md`: dated KST entry for what happened in this revisit.
 - Update `REFERENCES.md` only if references were actually used.
 - Update `REFERENCE.md` only when the user explicitly asks to update learning material, or when checkpoint confirmation includes updating the material.
 - Update `GLOSSARY.md` only when terminology matters and the user has shown enough understanding to make the term durable.
+- Regenerate the root `INDEX.md`: rewrite the registry table from **all** topic frontmatters. It is a derived projection — never hand-edit it. See [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md).
 
 Increment `revisits` only when opening an existing topic and materially using or updating it. Searching, listing, or linking to a topic does not count.
 
@@ -108,13 +118,24 @@ Use a small status set:
 - `solid`: understood well enough for current needs.
 - `stale`: explicitly marked as needing recheck before relying on it.
 
-Do not mark material stale just because time passed. Use `review_after` only when the topic is time-sensitive, version-sensitive, or depends on changing products, APIs, laws, prices, model behavior, schedules, or best practices. Warn when `review_after` has passed; do not silently change status.
+Do not mark material stale just because time passed. Use `review_after` only when the topic is time-sensitive, version-sensitive, or depends on changing products, APIs, laws, prices, model behavior, schedules, or best practices.
+
+## Surfacing Due Topics
+
+A topic is **due** when its `review_after` is in the past, or its `status` is `stale`. Surface due topics so learning does not silently rot:
+
+- On invocation, if any topic is due, mention it in one concise, non-blocking line (e.g. "2 topics due for recheck: `pi-vs-claude-code`, `vitest`"). Do not interrupt the learning branch beyond that line; surface at most once per session.
+- On demand ("what's due in my vault"), list the due topics.
+- The root `INDEX.md` marks due rows with ⚠ (computed from `review_after`; never stored).
+
+Surface only — never auto-change `status` or `review_after`. Offer to re-grok the topic or bump `review_after`, and act only on confirmation.
 
 ## File Formats
 
 Use the formats in:
 
 - [INDEX-FORMAT.md](./INDEX-FORMAT.md)
+- [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md)
 - [CHECKPOINT-FORMAT.md](./CHECKPOINT-FORMAT.md)
 - [REFERENCE-FORMAT.md](./REFERENCE-FORMAT.md)
 - [REFERENCES-FORMAT.md](./REFERENCES-FORMAT.md)
