@@ -4,6 +4,15 @@ A portable Agent Skill for **fast, resumable learning branches** while you code,
 
 Works with **Claude Code** and **Codex**.
 
+## Why a learning branch
+
+When a concept comes up mid-task and you just explain it inline, two things quietly cost you:
+
+1. **It burns your context window.** The tangent crowds out the work you were actually doing — by the time you're back, the model's working memory is half side-quest and your real task has been pushed out.
+2. **The explanation is throwaway.** It lives only in that session's scrollback. Compact or clear the context, or close the session, and it's gone — hit the same concept next week and you re-derive it from scratch.
+
+grok treats the detour as a **branch** off your session: fork away to understand the thing, let grok save the understanding to the vault — durable, retrievable, agent-readable — then resume your main thread with your context intact. Next time the concept comes up, the knowledge is already there to build on, in *and* across sessions.
+
 ## Origins
 
 grok descends from [Matt Pocock's `/teach` skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach). `/teach` is a full, multi-session *course builder*: you give it a topic, and it stands up a teaching workspace — a mission, beautiful HTML lessons, reusable components, reference docs, and learning records — to take you deep over time.
