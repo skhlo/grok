@@ -7,12 +7,12 @@ The user wants a fast learning branch inside whatever work they are already doin
 
 ## Vault
 
-Use `/Users/skhl/Vault/grok` as the global learning vault. Do not store grok topics inside the current repository unless the user explicitly asks.
+Use `~/Vault/grok` as the global learning vault. Do not store grok topics inside the current repository unless the user explicitly asks.
 
 Each canonical topic lives in:
 
 ```text
-/Users/skhl/Vault/grok/<topic-slug>/
+~/Vault/grok/<topic-slug>/
   INDEX.md
   CHECKPOINT.md
   REFERENCE.md
@@ -25,7 +25,7 @@ Only create files that are useful for the topic. `INDEX.md`, `CHECKPOINT.md`, an
 
 ## Topic Selection
 
-When invoked, identify the concept the user wants to understand. Search `/Users/skhl/Vault/grok` before creating anything. Match against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
+When invoked, identify the concept the user wants to understand. Search `~/Vault/grok` before creating anything. Match against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
 
 If one existing topic is clearly the same concept, use it. If several topics may match, show the top matches and ask which one to continue. If none match, create a canonical topic slug when writing is allowed. If a new concept connects to an existing one, add a `related_topics` edge (see Topic Schema) instead of duplicating or merging silently.
 
@@ -44,7 +44,7 @@ Every topic's `INDEX.md` frontmatter is the single source of truth; the root `IN
 
 Never create or modify vault files just because this skill was invoked.
 
-You may read and search `/Users/skhl/Vault/grok` automatically. Write only when:
+You may read and search `~/Vault/grok` automatically. Write only when:
 
 - The user explicitly says to save, checkpoint, remember, update, revise, or create learning materials.
 - The user confirms after you ask whether to save a checkpoint.
