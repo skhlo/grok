@@ -35,10 +35,10 @@ Use one canonical folder per concept. Put alternate names in `aliases` for searc
 
 Every topic's `INDEX.md` frontmatter is the single source of truth; the root `INDEX.md` registry is a derived projection of it. Maintain these fields (full spec in [INDEX-FORMAT.md](./INDEX-FORMAT.md)):
 
-- **`type`** — the topic's dominant knowledge nature, from the **closed** set `{concept, how-to, reference, decision}`. Singular. The set does not grow: never coin a new value — if none seems to fit, pick the closest (ADR-0001).
+- **`type`** — the topic's dominant knowledge nature, from the **closed** set `{concept, how-to, reference, decision}`. Singular. The set does not grow: never coin a new value — if none seems to fit, pick the closest.
 - **`tags`** — cross-cutting themes for grouping across topics. Curated-open: before tagging, read the tags already in use across the vault and **reuse an existing tag** rather than coin a near-duplicate. If a genuinely new tag is needed, surface it at checkpoint ("new tag `dx` — you already use `devx`; merge or keep?") before writing it.
 - **`description`** — a one-line summary; the registry's glance column. Keep it distinct from `Current Handle` (the richer resume detail).
-- **`related_topics`** — the knowledge graph, as directed labeled edges `{topic, relation}`, `relation ∈ {builds-on, contrasts-with}` (ADR-0002). `builds-on` is a prerequisite (stored once on the dependent topic); `contrasts-with` marks alternatives (stored once, read symmetric). Every `topic` must resolve to an existing topic folder — never point at a non-topic. A connection that is neither a prerequisite nor a contrast is **not** an edge; express it as a shared `tag`.
+- **`related_topics`** — the knowledge graph, as directed labeled edges `{topic, relation}`, `relation ∈ {builds-on, contrasts-with}`. `builds-on` is a prerequisite (stored once on the dependent topic); `contrasts-with` marks alternatives (stored once, read symmetric). Every `topic` must resolve to an existing topic folder — never point at a non-topic. A connection that is neither a prerequisite nor a contrast is **not** an edge; express it as a shared `tag`.
 
 ## Write Discipline
 

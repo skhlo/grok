@@ -31,7 +31,7 @@ From `/teach`, grok carries forward the parts that make learning actually stick:
 | Speed | Deliberate, lesson-paced | Speed-first; no quizzing mid-answer |
 | Writes | Produces lesson artifacts | **Only on your confirmation** — never litters your repo |
 
-grok also adds something `/teach` doesn't: the vault is a **dual-audience knowledge base**. Each topic carries machine-readable frontmatter (a typed classification, cross-cutting tags, a directed "builds-on / contrasts-with" knowledge graph), and a derived root index. That means an agent can *read your vault to reconstruct what you already know* — and teach accordingly — instead of starting from scratch every session. See [`CONTEXT.md`](CONTEXT.md) for the schema and [`docs/adr`](docs/adr) for why it's shaped this way.
+grok also adds something `/teach` doesn't: the vault is a **dual-audience knowledge base**. Each topic carries machine-readable frontmatter (a typed classification, cross-cutting tags, a directed "builds-on / contrasts-with" knowledge graph), and a derived root index. That means an agent can *read your vault to reconstruct what you already know* — and teach accordingly — instead of starting from scratch every session. See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for exactly how that's stored.
 
 ## How you use it
 

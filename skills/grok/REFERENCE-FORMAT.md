@@ -30,7 +30,7 @@
 
 ## Diátaxis sections (optional menu)
 
-Beyond the core sections above, a topic may draw from a menu of Diátaxis-aligned content modes, adding **only** the ones with real content (ADR-0003):
+Beyond the core sections above, a topic may draw from a menu of Diátaxis-aligned content modes, adding **only** the ones with real content:
 
 - **`## Explanation`** — understanding-oriented: the why, the mental model. (`concept` topics lead here.)
 - **`## How To`** — task-oriented procedural steps. (`how-to` topics lead here; closes grok's previous gap where procedure got buried in prose.)
@@ -41,7 +41,7 @@ Beyond the core sections above, a topic may draw from a menu of Diátaxis-aligne
 
 ## Rules
 
-- **Never force inputs.** Add a section only when it has content. A sparse topic is correct, not incomplete — do not emit empty headings to "complete" a template (ADR-0003).
+- **Never force inputs.** Add a section only when it has content. A sparse topic is correct, not incomplete — do not emit empty headings to "complete" a template.
 - Prefer useful compression over completeness.
 - Keep examples concrete.
 - Link to `REFERENCES.md` for source details instead of cluttering this file.
