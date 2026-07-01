@@ -132,25 +132,28 @@ GLOSSARY.md      핵심 용어와 정의
 
 ### Claude Code
 
-```sh
-git clone https://github.com/skhlo/grok.git ~/grok
-ln -s ~/grok/skills/grok ~/.claude/skills/grok
-mkdir -p ~/Vault/grok
-```
-
-그런 다음 이렇게 실행합니다.
+이 저장소를 플러그인 마켓플레이스로 추가한 뒤 플러그인을 설치합니다.
 
 ```text
-/grok <concept>
+/plugin marketplace add skhlo/grok
+/plugin install grok@grok
 ```
 
-또는 그냥 무언가를 grok해 달라고 말해도 됩니다.
+볼트 폴더는 처음 저장할 때 자동으로 만들어집니다.
 
 ### Codex
 
-Codex 플러그인 설정이 이 저장소를 가리키도록 하세요. [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) 매니페스트가 `skills/` 폴더를 노출합니다.
+이 저장소를 플러그인 마켓플레이스로 추가합니다.
 
-그런 다음 이렇게 실행합니다.
+```text
+codex plugin marketplace add skhlo/grok
+```
+
+그런 다음 Codex에서 `/plugins`를 열고 **grok** 마켓플레이스를 선택해 grok 플러그인을 설치합니다.
+
+### 사용하기
+
+이렇게 실행합니다.
 
 ```text
 /grok <concept>

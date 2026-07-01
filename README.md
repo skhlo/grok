@@ -135,25 +135,28 @@ The goal is simple: stop relearning the same thing from scratch.
 
 ### Claude Code
 
-```sh
-git clone https://github.com/skhlo/grok.git ~/grok
-ln -s ~/grok/skills/grok ~/.claude/skills/grok
-mkdir -p ~/Vault/grok
-```
-
-Then invoke it with:
+Add this repo as a plugin marketplace, then install the plugin:
 
 ```text
-/grok <concept>
+/plugin marketplace add skhlo/grok
+/plugin install grok@grok
 ```
 
-Or just ask to grok something.
+The vault folder is created for you the first time you save.
 
 ### Codex
 
-Point your Codex plugin config at this repo. The [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) manifest exposes the `skills/` folder.
+Add this repo as a plugin marketplace:
 
-Then invoke it with:
+```text
+codex plugin marketplace add skhlo/grok
+```
+
+Then open `/plugins` in Codex, select the **grok** marketplace, and install the grok plugin.
+
+### Then use it
+
+Invoke it with:
 
 ```text
 /grok <concept>
