@@ -1,5 +1,7 @@
 # grok
 
+English | [한국어](README.ko.md)
+
 AI explanations are useful, but they usually disappear into the chat.
 
 `grok` turns the ones worth keeping into reusable notes. Ask your assistant to explain a concept, get a short answer based on sources it searches, and if you want to keep it, save a plain Markdown note in your personal learning folder.
