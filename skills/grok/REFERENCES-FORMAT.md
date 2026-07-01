@@ -1,6 +1,6 @@
 # REFERENCES.md Format
 
-`REFERENCES.md` is the curated source list for a grok topic. It records what was consulted and why it matters.
+`REFERENCES.md` is the curated source list for a grok topic — the grounding an agent draws its answers from. Because grok grounds answers in active search, a grok yields sources; this file persists them so a revisit builds on citations instead of re-searching.
 
 ## Template
 
@@ -22,5 +22,5 @@
 
 - Prefer primary sources, official docs, papers, recognized experts, and well-moderated communities.
 - Annotate every source; bare links are not useful later.
-- Update this file only when references were actually used.
+- A grounded grok always yields sources — record them. `## Gaps` lists what the search has not yet answered; that list drives the next revisit's search (fill gaps and re-verify *due* sources rather than re-fetching what is already captured).
 - For current or high-stakes topics, record enough source context to know what may need rechecking.

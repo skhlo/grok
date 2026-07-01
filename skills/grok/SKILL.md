@@ -5,6 +5,8 @@ description: Quickly branch into learning a concept during coding, research, wri
 
 The user wants a fast learning branch inside whatever work they are already doing. Keep the session moving, teach only what is needed now, and save durable Markdown material only when the user asks or confirms a checkpoint.
 
+grok is for concepts and terms worth saving and revisiting — not trivial lookups. Because every grok is save-worthy by design, ground answers in active search of trusted sources rather than parametric memory: the up-front search cost always amortizes across future revisits.
+
 ## Vault
 
 Use `~/Vault/grok` as the global learning vault. Do not store grok topics inside the current repository unless the user explicitly asks.
@@ -44,7 +46,7 @@ Every topic's `INDEX.md` frontmatter is the single source of truth; the root `IN
 
 Never create or modify vault files just because this skill was invoked.
 
-You may read and search `~/Vault/grok` automatically. Write only when:
+You may read and search `~/Vault/grok`, and actively search the web to ground answers, automatically — searching and reading are never gated. Only *writing to the vault* is gated. Write only when:
 
 - The user explicitly says to save, checkpoint, remember, update, revise, or create learning materials.
 - The user confirms after you ask whether to save a checkpoint.
@@ -66,11 +68,11 @@ Keep the useful teaching concepts from `/teach`:
 - Ground the explanation in why the concept came up during the current task.
 - Estimate the user's zone of proximal development from the prompt, prior vault material, and the user's follow-up questions.
 - Teach just beyond the user's current level, not from first principles unless needed.
-- Use trusted references for factual, current, API-specific, legal, medical, financial, or otherwise high-stakes claims.
+- Ground answers in active search of trusted sources by default, not parametric memory — the search runs in service of the answer, not as a separate research phase. On revisit, read the topic's `REFERENCES.md` first and search only to fill `## Gaps` or re-verify a *due* source; never re-fetch sources already captured and still fresh.
 - Separate fluency from storage strength: a smooth explanation is not proof the user can retrieve the idea later.
 - Record misconceptions and corrected assumptions when checkpointing.
 
-Speed comes first during the learning branch. Do not quiz the user or interrupt for understanding checks while answering. At checkpoint time, ask at most one lightweight retrieval question if it would improve the saved learning state. Skip it if the user wants a quick save.
+Speed-first means never interrupting the user: do not quiz or run understanding checks while answering. It does not mean skipping grounding — the active search happens in service of the answer, inline, without a separate research detour. At checkpoint time, ask at most one lightweight retrieval question if it would improve the saved learning state. Skip it if the user wants a quick save.
 
 ## Checkpoints
 
@@ -81,7 +83,7 @@ On confirmed checkpoint:
 - Update `INDEX.md`: frontmatter (`type`, `description`, `tags`, `related_topics` edges, aliases, status, revisit count, KST timestamps, lightweight context) and the body's durable knowledge state (`Why This Matters`, `Current Handle`).
 - Overwrite `CHECKPOINT.md` (the volatile resume cursor): user level, stopping point, resume prompt, open loops, and optional retrieval result. Knowledge state lives in `INDEX.md`, not here.
 - Append `HISTORY.md`: dated KST entry for what happened in this revisit.
-- Update `REFERENCES.md` only if references were actually used.
+- Persist the search results to `REFERENCES.md` (sources, trust, gaps), and reconcile the current understanding against them — correct the persisted note if a source disagrees.
 - Update `REFERENCE.md` only when the user explicitly asks to update learning material, or when checkpoint confirmation includes updating the material.
 - Update `GLOSSARY.md` only when terminology matters and the user has shown enough understanding to make the term durable.
 - Regenerate the root `INDEX.md`: rewrite the registry table from **all** topic frontmatters. It is a derived projection — never hand-edit it. See [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md).

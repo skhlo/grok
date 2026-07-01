@@ -30,7 +30,7 @@ One folder per concept. Alternate names live in `aliases` (frontmatter) — neve
 | `CHECKPOINT.md` | The volatile resume cursor: user level, stopping point, resume prompt, open loops | On checkpoint |
 | `HISTORY.md` | Append-only dated log of each revisit | On checkpoint |
 | `REFERENCE.md` | Reusable distilled material (with optional `## Explanation` / `## How To` sections) | When useful |
-| `REFERENCES.md` | Annotated source list | When sources were used |
+| `REFERENCES.md` | Annotated source list — the topic's grounding | On checkpoint |
 | `GLOSSARY.md` | Tight, opinionated definitions of the topic's terms | When terms are durable |
 
 Files are created **only when they add value** — a sparse topic with just `INDEX.md` is correct, not incomplete.

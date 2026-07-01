@@ -26,7 +26,7 @@ From `/teach`, grok carries forward the parts that make learning actually stick:
 - **Zone of proximal development** — teach *just beyond* your current level, not from first principles. grok estimates this from your prompt, your follow-ups, and prior vault material.
 - **Fluency vs. storage strength** — a smooth explanation feels like mastery but isn't retention. grok separates the two and, at checkpoint time, can ask a single lightweight retrieval question to strengthen what you'll actually remember.
 - **Ground everything in *why*** — teaching is tied to the real reason the concept came up in your work, never abstract.
-- **Trust real sources, not parametric memory** — for factual, current, or high-stakes claims, grok leans on cited references and records them.
+- **Trust real sources, not parametric memory** — grok grounds its answers in active search of high-trust sources and records them, so revisits build on citations rather than re-derived guesses.
 - **Glossary discipline** — compressing a concept into a tight, opinionated definition is itself evidence of understanding; durable terms get saved.
 - **Capture misconceptions** — corrected assumptions are recorded, because what you got *wrong* shapes what to revisit.
 
@@ -35,7 +35,7 @@ From `/teach`, grok carries forward the parts that make learning actually stick:
 | | `/teach` | `grok` |
 |---|---|---|
 | Moment | "Teach me this topic" (planned, deep) | "Grok this *now*" (inline, mid-task) |
-| Output | Beautiful HTML lessons + course | Fast inline explanation + Markdown checkpoint |
+| Output | Beautiful HTML lessons + course | Grounded inline explanation + Markdown checkpoint |
 | State lives in | A per-topic workspace in the current dir | One **global vault** (`~/Vault/grok`) |
 | Speed | Deliberate, lesson-paced | Speed-first; no quizzing mid-answer |
 | Writes | Produces lesson artifacts | **Only on your confirmation** — never litters your repo |
