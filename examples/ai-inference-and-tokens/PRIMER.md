@@ -1,4 +1,4 @@
-# AI inference and tokens Reference
+# AI inference and tokens Primer
 
 ## Core Idea
 

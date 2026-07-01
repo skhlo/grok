@@ -5,7 +5,7 @@
 ## Template
 
 ```md
-# {Topic} Reference
+# {Topic} Primer
 
 ## Core Idea
 

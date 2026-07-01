@@ -21,4 +21,4 @@ compressed or forget details.
 
 - Explain context windows using tokens without getting too technical.
 - Show how input tokens and output tokens affect API cost and latency.
-- Decide whether to turn this into a deeper reference after the README example lands.
+- Decide whether to turn this into a deeper primer after the README example lands.
