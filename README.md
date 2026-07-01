@@ -1,123 +1,190 @@
 # grok
 
-A portable Agent Skill for **fast, resumable learning branches** while you code, research, or write. When a concept comes up mid-task, `grok` teaches it at your level — grounded in sources it searches, not parametric guesses — without breaking your flow, then, only when you confirm, saves a durable, resumable checkpoint to a global learning vault so the next session (and the agent) can pick up exactly where you left off.
+AI explanations are useful, but they usually disappear into the chat.
+
+`grok` turns the ones worth keeping into reusable notes. Ask your assistant to explain a concept, get a short answer based on sources it searches, and if you want to keep it, save a plain Markdown note in your personal learning folder.
+
+Next time the same topic comes up, your assistant can read what you already learned and continue from there instead of starting over.
 
 Works with **Claude Code** and **Codex**.
 
-## Quickstart
+## Why use this?
 
-**Claude Code**
+Use `grok` when you ask your AI assistant to explain something and think:
+
+> I am going to need this again.
+
+Instead of losing the explanation in chat history, `grok` saves:
+
+- what the concept means
+- why it came up
+- where you stopped
+- the sources it used
+- how to resume next time
+
+It is for concepts worth revisiting, not one-off facts.
+
+## What it feels like
+
+You are working and hit a concept you half-understand:
+
+```text
+you  > /grok AI inference and tokens
+
+grok > AI inference is when an already-trained AI model is being used.
+
+       Training is like teaching the model.
+       Inference is the model doing the job.
+
+       Tokens are the small chunks of text the model reads and writes.
+       They are not exactly words. They are the AI's text currency.
+
+       Short version:
+       inference = the AI doing the work
+       tokens = the pieces of text it works with
+
+       Sources: Google Cloud, IBM, OpenAI docs
+
+       Save this in Vault/grok/ai-inference-and-tokens/?
+
+you  > yes
+
+grok > Saved.
+```
+
+That saved note is just Markdown. You can read it, search it, edit it, or ignore it until you need it again.
+
+## The basic workflow
+
+1. **Pause the main task.** A concept comes up while you are coding, researching, or writing.
+2. **Grok the concept.** Ask `/grok <concept>`.
+3. **Get a short explanation.** grok teaches at your level and uses sources it searches.
+4. **Save only if useful.** It writes to your vault only after you say yes.
+5. **Resume later.** The next time you grok that topic, it finds the saved note first.
+
+If your tool supports session branching, this works especially well as a detour:
+
+- Claude Code: use `/branch`
+- Codex: use `/fork`, or `/side` for a quick detour
+
+Then return to your original session when the concept is handled.
+
+## What gets saved?
+
+By default, grok uses:
+
+```text
+~/Vault/grok/
+```
+
+Think of this as your personal learning folder. Each topic gets its own folder:
+
+```text
+~/Vault/grok/ai-inference-and-tokens/
+  INDEX.md        what it means and your current understanding
+  CHECKPOINT.md   where you stopped and how to resume
+  HISTORY.md      what happened each time you revisited it
+  REFERENCES.md   the sources grok used
+```
+
+Some topics may also get:
+
+```text
+REFERENCE.md     a cleaner reusable explanation
+GLOSSARY.md      important terms and definitions
+```
+
+Files are created only when they help. A small topic can stay small.
+
+## See a real saved example
+
+This repo includes a sample saved grok:
+
+[examples/ai-inference-and-tokens](examples/ai-inference-and-tokens)
+
+It shows the files a real checkpoint can produce:
+
+- `INDEX.md`: the durable understanding
+- `CHECKPOINT.md`: where the user stopped and how to resume
+- `REFERENCE.md`: a clean explanation worth rereading
+- `REFERENCES.md`: the sources searched and why they were useful
+- `HISTORY.md`: the learning timeline
+
+The important part is that learning is incremental. You do not need to understand everything
+in one pass. grok can save the useful handle you have now, then resume from that point when a
+deeper dive becomes useful.
+
+## Why this is different from a normal chat
+
+In a normal chat, explanations are temporary. They live in the scrollback, and they are easy to lose when the session ends, gets compacted, or moves on.
+
+`grok` makes useful explanations durable:
+
+- **It remembers your level.** The saved note says what you currently understand.
+- **It keeps the reason.** The note records why the concept came up.
+- **It saves sources.** Future answers can build on sources already found.
+- **It resumes.** Your assistant can continue from the saved stopping point.
+- **It works across projects.** The vault is global, not tied to one repo.
+
+The goal is simple: stop relearning the same thing from scratch.
+
+## Install
+
+### Claude Code
 
 ```sh
 git clone https://github.com/skhlo/grok.git ~/grok
-ln -s ~/grok/skills/grok ~/.claude/skills/grok   # surface the skill
-mkdir -p ~/Vault/grok                            # create the vault
+ln -s ~/grok/skills/grok ~/.claude/skills/grok
+mkdir -p ~/Vault/grok
 ```
 
-**Codex** — point your Codex plugin config at this repo; the [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) manifest exposes `skills/`.
-
-Then invoke with `/grok <concept>`, or just ask to "grok" something.
-
-## How you use it
-
-1. **Fork off the tangent.** A concept worth keeping comes up mid-task. Rather than spend your main thread's context on it, fork the session so the detour is isolated — Claude Code: `/branch`; Codex: `/fork` (or `/side` for a quick, auto-returning detour).
-2. **Grok it in the fork.** Run `/grok <concept>`. grok teaches it at your level, grounded in sources it searches — then, if it's worth keeping, checkpoints to `~/Vault/grok/<topic>/` on your confirmation. It never writes without your yes.
-3. **Return with context intact.** Jump back to your main session (`/resume`, or just end the `/side` detour). Your original thread is untouched; the knowledge now lives in the vault.
-4. **Resume later, anywhere.** Next time you `/grok` that topic — in any session or project — it finds the checkpoint and picks up from it, reading its saved sources first and searching only for what's new.
-5. **Stay fresh.** Topics can carry a review date; grok surfaces what's due for a recheck so time-sensitive knowledge doesn't silently rot.
-
-## What a grok looks like
-
-You've forked off the tangent (`/branch` in Claude Code, `/fork` in Codex), then:
+Then invoke it with:
 
 ```text
-you ▸ /grok debounce vs throttle
-
-grok ▸ (searches MDN + Lodash docs)
-      Both rate-limit a function, differently:
-      • debounce — wait until calls stop, then run once         (search-as-you-type)
-      • throttle — run at most once per interval, drop the rest  (scroll/resize)
-      Rule of thumb: debounce = "after the storm"; throttle = "once per tick."
-      Grounded in: MDN, Lodash docs.
-
-      Save this as a checkpoint in Vault/grok/debounce-vs-throttle/?
-
-you ▸ yes
-
-grok ▸ Saved:
-      ~/Vault/grok/debounce-vs-throttle/INDEX.md       what it is + your current handle
-      ~/Vault/grok/debounce-vs-throttle/CHECKPOINT.md  where you stopped, open loops
-      ~/Vault/grok/debounce-vs-throttle/REFERENCES.md  MDN + Lodash, annotated
-      ~/Vault/grok/INDEX.md                            registry updated
+/grok <concept>
 ```
 
-Then `/resume` back to your main task — context untouched. Next week, `/grok debounce vs throttle` resumes from this checkpoint, reads those saved sources first, and searches only for what's new.
+Or just ask to grok something.
 
-What it wrote is plain Markdown you can read, grep, and edit — the topic's `INDEX.md`:
+### Codex
 
-```md
----
-topic: "debounce vs throttle"
-type: concept
-description: "Both rate-limit a function: debounce runs once after calls stop; throttle at most once per interval."
-tags:
-  - "javascript"
-  - "performance"
-status: active
----
+Point your Codex plugin config at this repo. The [`.codex-plugin/plugin.json`](.codex-plugin/plugin.json) manifest exposes the `skills/` folder.
 
-## Current Handle
-Debounce coalesces a burst into one trailing call; throttle enforces a steady max rate…
+Then invoke it with:
+
+```text
+/grok <concept>
 ```
 
-…plus a derived root registry (`~/Vault/grok/INDEX.md`) with a glanceable row per topic. See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for the full format.
+Or just ask to grok something.
 
-## Why a learning branch
+## For technical readers
 
-grok is for concepts and terms worth saving and revisiting — not trivial lookups. When one of those comes up mid-task and you just explain it inline, two things quietly cost you:
+`grok` is a portable Agent Skill for fast, resumable learning detours during other work. It searches trusted sources before teaching, writes only after explicit confirmation, and stores learning state as Markdown with YAML frontmatter.
 
-1. **It burns your context window.** The tangent crowds out the work you were actually doing — by the time you're back, the model's working memory is half side-quest and your real task has been pushed out.
-2. **The explanation is throwaway.** It lives only in that session's scrollback. Compact or clear the context, or close the session, and it's gone — hit the same concept next week and you re-derive it from scratch.
+The vault is meant for two readers:
 
-grok treats the detour as a **branch** off your session: fork away to understand the thing, let grok save the understanding to the vault — durable, retrievable, agent-readable — then resume your main thread with your context intact. Next time the concept comes up, the knowledge is already there to build on, in *and* across sessions.
+- you, browsing plain Markdown notes
+- your AI assistant, reconstructing what you already know before teaching more
 
-And it grounds as it goes: each answer comes from an active search of high-trust sources, and those sources are saved alongside the checkpoint. So the *first* time you grok something you pay the search once — every revisit reads what's already captured and searches only to fill the gaps. The grounding compounds instead of being re-paid.
+Each topic's `INDEX.md` is the source of truth. The root `~/Vault/grok/INDEX.md` is a generated overview of every topic. Do not edit the root index by hand.
+
+See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for the full file format.
 
 ## Origins
 
-grok descends from [Matt Pocock's `/teach` skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach). `/teach` is a full, multi-session *course builder*: you give it a topic, and it stands up a teaching workspace — a mission, beautiful HTML lessons, reusable components, reference docs, and learning records — to take you deep over time.
+`grok` descends from [Matt Pocock's `/teach` skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach).
 
-grok keeps `/teach`'s learning *principles* but throws out the workspace machinery, because it's built for a different moment: not "sit down and learn this topic," but "I'm in the middle of something and just need to understand this *now*."
+`/teach` is a deeper course-building workflow. `grok` keeps the learning principles but changes the shape: it is for the moment when you are in the middle of something and need to understand a concept now.
 
-## The learning principles it inherits
+The principles it keeps:
 
-From `/teach`, grok carries forward the parts that make learning actually stick:
+- teach just beyond your current level
+- explain why the concept matters in your current work
+- use trusted sources instead of memory alone
+- separate "that made sense" from "I will remember this later"
+- save misconceptions and corrected assumptions when useful
 
-- **Zone of proximal development** — teach *just beyond* your current level, not from first principles. grok estimates this from your prompt, your follow-ups, and prior vault material.
-- **Fluency vs. storage strength** — a smooth explanation feels like mastery but isn't retention. grok separates the two and, at checkpoint time, can ask a single lightweight retrieval question to strengthen what you'll actually remember.
-- **Ground everything in *why*** — teaching is tied to the real reason the concept came up in your work, never abstract.
-- **Trust real sources, not parametric memory** — grok grounds its answers in active search of high-trust sources and records them, so revisits build on citations rather than re-derived guesses.
-- **Glossary discipline** — compressing a concept into a tight, opinionated definition is itself evidence of understanding; durable terms get saved.
-- **Capture misconceptions** — corrected assumptions are recorded, because what you got *wrong* shapes what to revisit.
+## License
 
-## How grok is different
-
-| | `/teach` | `grok` |
-|---|---|---|
-| Moment | "Teach me this topic" (planned, deep) | "Grok this *now*" (inline, mid-task) |
-| Output | Beautiful HTML lessons + course | Grounded inline explanation + Markdown checkpoint |
-| State lives in | A per-topic workspace in the current dir | One **global vault** (`~/Vault/grok`) |
-| Speed | Deliberate, lesson-paced | Speed-first; no quizzing mid-answer |
-| Writes | Produces lesson artifacts | **Only on your confirmation** — never litters your repo |
-
-grok also adds something `/teach` doesn't: the vault is a **dual-audience knowledge base**. Each topic carries machine-readable frontmatter (a typed classification, cross-cutting tags, a directed "builds-on / contrasts-with" knowledge graph), and a derived root index. That means an agent can *read your vault to reconstruct what you already know* — and teach accordingly — instead of starting from scratch every session. See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for exactly how that's stored.
-
-## The vault
-
-Plain Markdown under **`~/Vault/grok/`**, one folder per topic, plus a derived root `INDEX.md` registry. Browsable by you, readable by agents. To use a different location, change the `~/Vault/grok` references in [`skills/grok/SKILL.md`](skills/grok/SKILL.md). Timestamps default to **KST**; to use another timezone, change the `TZ`/`KST` values in SKILL.md's timestamp instruction.
-
-## Credits & license
-
-Built on the learning philosophy of [`/teach`](https://github.com/mattpocock/skills) by Matt Pocock. grok is an independent skill — it adapts those principles for fast, resumable, agent-readable learning rather than reusing `/teach`'s code.
-
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
