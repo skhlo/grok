@@ -91,7 +91,7 @@ Think of this as your personal learning folder. Each topic gets its own folder:
 Some topics may also get:
 
 ```text
-REFERENCE.md     a cleaner reusable explanation
+PRIMER.md        a cleaner reusable explanation
 GLOSSARY.md      important terms and definitions
 ```
 
@@ -107,7 +107,7 @@ It shows the files a real checkpoint can produce:
 
 - `INDEX.md`: the durable understanding
 - `CHECKPOINT.md`: where the user stopped and how to resume
-- `REFERENCE.md`: a clean explanation worth rereading
+- `PRIMER.md`: a clean explanation worth rereading
 - `REFERENCES.md`: the sources searched and why they were useful
 - `HISTORY.md`: the learning timeline
 

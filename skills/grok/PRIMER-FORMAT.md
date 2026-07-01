@@ -1,6 +1,6 @@
-# REFERENCE.md Format
+# PRIMER.md Format
 
-`REFERENCE.md` is the reusable distilled learning material for a topic. Update it only when the user asks to update learning material, or when checkpoint confirmation includes updating the material.
+`PRIMER.md` is the reusable distilled learning material for a topic. Update it only when the user asks to update learning material, or when checkpoint confirmation includes updating the material.
 
 ## Template
 

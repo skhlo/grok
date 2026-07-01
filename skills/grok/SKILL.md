@@ -17,17 +17,17 @@ Each canonical topic lives in:
 ~/Vault/grok/<topic-slug>/
   INDEX.md
   CHECKPOINT.md
-  REFERENCE.md
+  PRIMER.md
   REFERENCES.md
   HISTORY.md
   GLOSSARY.md
 ```
 
-Only create files that are useful for the topic. `INDEX.md`, `CHECKPOINT.md`, and `HISTORY.md` are the default checkpoint files. `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md` are updated only when they add value or the user asks for learning materials.
+Only create files that are useful for the topic. `INDEX.md`, `CHECKPOINT.md`, and `HISTORY.md` are the default checkpoint files. `PRIMER.md`, `REFERENCES.md`, and `GLOSSARY.md` are updated only when they add value or the user asks for learning materials.
 
 ## Topic Selection
 
-When invoked, identify the concept the user wants to understand. Search `~/Vault/grok` before creating anything. Start from the root `INDEX.md` registry — it lists every topic (name, type, tags, summary) in one file, so it is the cheapest way to see what already exists. If that is inconclusive, match more deeply against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
+When invoked, identify the concept the user wants to understand. Search `~/Vault/grok` before creating anything. Start from the root `INDEX.md` registry — it lists every topic (name, type, tags, summary) in one file, so it is the cheapest way to see what already exists. If that is inconclusive, match more deeply against folder names, frontmatter `topic`, `aliases`, headings, `PRIMER.md`, `REFERENCES.md`, and `GLOSSARY.md`.
 
 If one existing topic is clearly the same concept, use it. If several topics may match, show the top matches and ask which one to continue. If none match, create a canonical topic slug when writing is allowed. If a new concept connects to an existing one, add a `related_topics` edge (see Topic Schema) instead of duplicating or merging silently.
 
@@ -84,7 +84,7 @@ On confirmed checkpoint:
 - Overwrite `CHECKPOINT.md` (the volatile resume cursor): user level, stopping point, resume prompt, open loops, and optional retrieval result. Knowledge state lives in `INDEX.md`, not here.
 - Append `HISTORY.md`: dated KST entry for what happened in this revisit.
 - Persist the search results to `REFERENCES.md` (sources, trust, gaps), and reconcile the current understanding against them — correct the persisted note if a source disagrees.
-- Update `REFERENCE.md` only when the user explicitly asks to update learning material, or when checkpoint confirmation includes updating the material.
+- Update `PRIMER.md` only when the user explicitly asks to update learning material, or when checkpoint confirmation includes updating the material.
 - Update `GLOSSARY.md` only when terminology matters and the user has shown enough understanding to make the term durable.
 - Regenerate the root `INDEX.md`: rewrite the registry table from **all** topic frontmatters. It is a derived projection — never hand-edit it. See [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md).
 
@@ -139,7 +139,7 @@ Use the formats in:
 - [INDEX-FORMAT.md](./INDEX-FORMAT.md)
 - [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md)
 - [CHECKPOINT-FORMAT.md](./CHECKPOINT-FORMAT.md)
-- [REFERENCE-FORMAT.md](./REFERENCE-FORMAT.md)
+- [PRIMER-FORMAT.md](./PRIMER-FORMAT.md)
 - [REFERENCES-FORMAT.md](./REFERENCES-FORMAT.md)
 - [HISTORY-FORMAT.md](./HISTORY-FORMAT.md)
 - [GLOSSARY-FORMAT.md](./GLOSSARY-FORMAT.md)

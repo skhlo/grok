@@ -13,7 +13,7 @@ The format is based on the [**Open Knowledge Format (OKF)**](https://cloud.googl
 │   ├── INDEX.md              ← the topic's frontmatter + orientation (always present)
 │   ├── CHECKPOINT.md         ← where you stopped and how to resume
 │   ├── HISTORY.md            ← dated log of each revisit
-│   ├── REFERENCE.md          ← distilled learning material (optional)
+│   ├── PRIMER.md             ← distilled learning material (optional)
 │   ├── REFERENCES.md         ← curated sources — the topic's grounding
 │   └── GLOSSARY.md           ← canonical terms for the topic (optional)
 └── vitest/
@@ -29,7 +29,7 @@ One folder per concept. Alternate names live in `aliases` (frontmatter) — neve
 | `INDEX.md` | Frontmatter (the source of truth) + why it matters, current handle — the durable knowledge state | Always |
 | `CHECKPOINT.md` | The volatile resume cursor: user level, stopping point, resume prompt, open loops | On checkpoint |
 | `HISTORY.md` | Append-only dated log of each revisit | On checkpoint |
-| `REFERENCE.md` | Reusable distilled material (with optional `## Explanation` / `## How To` sections) | When useful |
+| `PRIMER.md` | Reusable distilled material (with optional `## Explanation` / `## How To` sections) | When useful |
 | `REFERENCES.md` | Annotated source list — the topic's grounding | On checkpoint |
 | `GLOSSARY.md` | Tight, opinionated definitions of the topic's terms | When terms are durable |
 

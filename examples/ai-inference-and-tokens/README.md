@@ -22,7 +22,7 @@ answer into a complete course.
 
 - [INDEX.md](INDEX.md): what the topic is and what the user currently understands
 - [CHECKPOINT.md](CHECKPOINT.md): where to resume next time
-- [REFERENCE.md](REFERENCE.md): a cleaned-up explanation for rereading
+- [PRIMER.md](PRIMER.md): a cleaned-up explanation for rereading
 - [REFERENCES.md](REFERENCES.md): sources searched and why they mattered
 - [HISTORY.md](HISTORY.md): when the topic was revisited and what changed
 
