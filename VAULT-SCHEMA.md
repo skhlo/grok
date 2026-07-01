@@ -26,8 +26,8 @@ One folder per concept. Alternate names live in `aliases` (frontmatter) — neve
 
 | File | Holds | When |
 |------|-------|------|
-| `INDEX.md` | Frontmatter (the source of truth) + why it matters, current handle, resume point | Always |
-| `CHECKPOINT.md` | Current understanding, stopping point, resume prompt, open loops | On checkpoint |
+| `INDEX.md` | Frontmatter (the source of truth) + why it matters, current handle — the durable knowledge state | Always |
+| `CHECKPOINT.md` | The volatile resume cursor: user level, stopping point, resume prompt, open loops | On checkpoint |
 | `HISTORY.md` | Append-only dated log of each revisit | On checkpoint |
 | `REFERENCE.md` | Reusable distilled material (with optional `## Explanation` / `## How To` sections) | When useful |
 | `REFERENCES.md` | Annotated source list | When sources were used |
@@ -86,7 +86,7 @@ contexts:                    # lightweight: where/why the topic came up
 
 ### Body
 
-Below the frontmatter, three short sections: **Why This Matters** (why it came up), **Current Handle** (what you understand now), **Resume Here** (the next best step).
+Below the frontmatter, two short sections holding the durable knowledge state: **Why This Matters** (why it came up) and **Current Handle** (what you understand now). The resume cursor (where you stopped, next step) lives in `CHECKPOINT.md`, not here.
 
 ## The root index
 

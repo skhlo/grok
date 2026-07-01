@@ -51,7 +51,7 @@ grok also adds something `/teach` doesn't: the vault is a **dual-audience knowle
 
 ## The vault
 
-Plain Markdown under **`~/Vault/grok/`**, one folder per topic, plus a derived root `INDEX.md` registry. Browsable by you, readable by agents. To use a different location, change the `~/Vault/grok` references in [`skills/grok/SKILL.md`](skills/grok/SKILL.md).
+Plain Markdown under **`~/Vault/grok/`**, one folder per topic, plus a derived root `INDEX.md` registry. Browsable by you, readable by agents. To use a different location, change the `~/Vault/grok` references in [`skills/grok/SKILL.md`](skills/grok/SKILL.md). Timestamps default to **KST**; to use another timezone, change the `TZ`/`KST` values in SKILL.md's timestamp instruction.
 
 ## Install (Claude Code)
 

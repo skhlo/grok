@@ -25,7 +25,7 @@ Only create files that are useful for the topic. `INDEX.md`, `CHECKPOINT.md`, an
 
 ## Topic Selection
 
-When invoked, identify the concept the user wants to understand. Search `~/Vault/grok` before creating anything. Match against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
+When invoked, identify the concept the user wants to understand. Search `~/Vault/grok` before creating anything. Start from the root `INDEX.md` registry — it lists every topic (name, type, tags, summary) in one file, so it is the cheapest way to see what already exists. If that is inconclusive, match more deeply against folder names, frontmatter `topic`, `aliases`, headings, `REFERENCE.md`, `REFERENCES.md`, and `GLOSSARY.md`.
 
 If one existing topic is clearly the same concept, use it. If several topics may match, show the top matches and ask which one to continue. If none match, create a canonical topic slug when writing is allowed. If a new concept connects to an existing one, add a `related_topics` edge (see Topic Schema) instead of duplicating or merging silently.
 
@@ -78,8 +78,8 @@ A checkpoint saves where the user stopped and how to resume. It is not the same 
 
 On confirmed checkpoint:
 
-- Update `INDEX.md`: `type`, `description`, `tags`, `related_topics` edges, aliases, status, revisit count, KST timestamps, and lightweight context.
-- Overwrite `CHECKPOINT.md`: current understanding, stopping point, resume prompt, open loops, and optional retrieval result.
+- Update `INDEX.md`: frontmatter (`type`, `description`, `tags`, `related_topics` edges, aliases, status, revisit count, KST timestamps, lightweight context) and the body's durable knowledge state (`Why This Matters`, `Current Handle`).
+- Overwrite `CHECKPOINT.md` (the volatile resume cursor): user level, stopping point, resume prompt, open loops, and optional retrieval result. Knowledge state lives in `INDEX.md`, not here.
 - Append `HISTORY.md`: dated KST entry for what happened in this revisit.
 - Update `REFERENCES.md` only if references were actually used.
 - Update `REFERENCE.md` only when the user explicitly asks to update learning material, or when checkpoint confirmation includes updating the material.
@@ -88,7 +88,7 @@ On confirmed checkpoint:
 
 Increment `revisits` only when opening an existing topic and materially using or updating it. Searching, listing, or linking to a topic does not count.
 
-Use KST timestamps, for example `2026-06-26 15:42 KST`.
+Use KST timestamps, for example `2026-06-26 15:42 KST`. Read the actual current time from the system before writing any timestamp — run `TZ='Asia/Seoul' date '+%Y-%m-%d %H:%M KST'` — never guess a time or copy one from an example. KST is this vault's default; to use another timezone, change the `TZ` value and the `KST` label consistently across the vault.
 
 ## Lightweight Context
 
@@ -126,7 +126,7 @@ A topic is **due** when its `review_after` is in the past, or its `status` is `s
 
 - On invocation, if any topic is due, mention it in one concise, non-blocking line (e.g. "2 topics due for recheck: `pi-vs-claude-code`, `vitest`"). Do not interrupt the learning branch beyond that line; surface at most once per session.
 - On demand ("what's due in my vault"), list the due topics.
-- The root `INDEX.md` marks due rows with ⚠ (computed from `review_after`; never stored).
+- The root `INDEX.md` marks due rows with ⚠, but that marker is only a snapshot from the last regeneration; this live check on invocation is authoritative.
 
 Surface only — never auto-change `status` or `review_after`. Offer to re-grok the topic or bump `review_after`, and act only on confirmation.
 

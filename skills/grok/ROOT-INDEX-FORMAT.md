@@ -21,7 +21,7 @@ Updated: YYYY-MM-DD HH:MM KST
 ## Rules
 
 - **Pure projection.** Each row's fields come straight from that topic's `INDEX.md` frontmatter (`topic`, `type`, `status`, `tags`, `last_touched`, `description`). If a field is missing from a topic, fix the topic's frontmatter — do not invent it here.
-- **Due marker.** Append ⚠ to `Status` when the topic is **due**: `review_after` is in the past, or `status` is `stale`. Computed from frontmatter; never stored. (See `SKILL.md` "Surfacing due topics".)
+- **Due marker.** Append ⚠ to `Status` when the topic is **due**: `review_after` is in the past, or `status` is `stale`. It is a **snapshot as of the last regeneration** (not a frontmatter field), so it can lag until the next checkpoint — the live due-check run on invocation (`SKILL.md` "Surfacing Due Topics") is authoritative. Kept in the table because it is useful when browsing the raw file without an agent.
 - **Sort** by `last_touched`, most recent first, so the active frontier is at the top.
 - **Regeneration** rewrites the whole table from all topic frontmatters — it is not patched row by row.
 - **Updated** is the timestamp of the regeneration (the latest checkpoint).

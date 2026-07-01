@@ -1,6 +1,6 @@
 # INDEX.md Format
 
-`INDEX.md` is the entry point for a grok topic. It should be optimized for search, quick orientation, and resuming later. Its frontmatter is the **single source of truth** for the topic: the root `INDEX.md` registry is a derived projection of these fields (see [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md)), so everything the registry shows must live here.
+`INDEX.md` is the entry point for a grok topic. It holds the **durable knowledge state** — what the topic is and what the user understands — optimized for search and quick orientation. The volatile resume cursor (stopping point, open loops) lives in [`CHECKPOINT.md`](./CHECKPOINT-FORMAT.md), not here. Its frontmatter is the **single source of truth** for the topic: the root `INDEX.md` registry is a derived projection of these fields (see [ROOT-INDEX-FORMAT.md](./ROOT-INDEX-FORMAT.md)), so everything the registry shows must live here.
 
 ## Template
 
@@ -37,11 +37,7 @@ contexts:
 
 ## Current Handle
 
-{The richer statement of what the user currently understands — 1-3 sentences. This is the resume detail; `description` is the one-line glance.}
-
-## Resume Here
-
-{The next best question, example, or task to continue from.}
+{The richer statement of what the user currently understands — 1-3 sentences. The durable knowledge state; `description` is the one-line glance.}
 ```
 
 ## Field rules

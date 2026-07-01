@@ -1,6 +1,6 @@
 # CHECKPOINT.md Format
 
-`CHECKPOINT.md` captures the latest stopping point. It is overwritten at each confirmed checkpoint.
+`CHECKPOINT.md` captures the latest stopping point — the volatile resume cursor. It is overwritten at each confirmed checkpoint. The durable knowledge state (why the topic matters, current handle) lives in the topic's [`INDEX.md`](./INDEX-FORMAT.md); this file is only where you stopped and how to resume.
 
 ## Template
 
@@ -8,14 +8,6 @@
 # Checkpoint: {Topic}
 
 Updated: YYYY-MM-DD HH:MM KST
-
-## Why This Came Up
-
-{The coding, research, writing, or other task that triggered this learning branch.}
-
-## Current Understanding
-
-{Concise summary of what the user now understands.}
 
 ## User Level
 
