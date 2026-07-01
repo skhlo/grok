@@ -1,17 +1,19 @@
 # grok
 
-A portable Agent Skill for **fast, resumable learning branches** while you code, research, or write. When a concept comes up mid-task, `grok` teaches it at your level without breaking your flow — then, only when you confirm, saves a durable, resumable checkpoint to a global learning vault so the next session (and the agent) can pick up exactly where you left off.
+A portable Agent Skill for **fast, resumable learning branches** while you code, research, or write. When a concept comes up mid-task, `grok` teaches it at your level — grounded in sources it searches, not parametric guesses — without breaking your flow, then, only when you confirm, saves a durable, resumable checkpoint to a global learning vault so the next session (and the agent) can pick up exactly where you left off.
 
 Works with **Claude Code** and **Codex**.
 
 ## Why a learning branch
 
-When a concept comes up mid-task and you just explain it inline, two things quietly cost you:
+grok is for concepts and terms worth saving and revisiting — not trivial lookups. When one of those comes up mid-task and you just explain it inline, two things quietly cost you:
 
 1. **It burns your context window.** The tangent crowds out the work you were actually doing — by the time you're back, the model's working memory is half side-quest and your real task has been pushed out.
 2. **The explanation is throwaway.** It lives only in that session's scrollback. Compact or clear the context, or close the session, and it's gone — hit the same concept next week and you re-derive it from scratch.
 
 grok treats the detour as a **branch** off your session: fork away to understand the thing, let grok save the understanding to the vault — durable, retrievable, agent-readable — then resume your main thread with your context intact. Next time the concept comes up, the knowledge is already there to build on, in *and* across sessions.
+
+And it grounds as it goes: each answer comes from an active search of high-trust sources, and those sources are saved alongside the checkpoint. So the *first* time you grok something you pay the search once — every revisit reads what's already captured and searches only to fill the gaps. The grounding compounds instead of being re-paid.
 
 ## Origins
 
@@ -44,8 +46,8 @@ grok also adds something `/teach` doesn't: the vault is a **dual-audience knowle
 
 ## How you use it
 
-1. **Branch in.** Mid-task, run `/grok <concept>` or just ask to "grok" something. grok teaches it at your level, grounded in why it came up — then you're back to work.
-2. **Checkpoint (optional).** If the detour was substantial, grok asks whether to save. On your yes, it writes `~/Vault/grok/<topic>/` (a resume point, current understanding, open loops). It never writes without confirmation.
+1. **Branch in.** Mid-task, run `/grok <concept>` or just ask to "grok" something. grok teaches it at your level — grounded in why it came up and in sources it searches — then you're back to work.
+2. **Checkpoint (optional).** If the detour was substantial, grok asks whether to save. On your yes, it writes `~/Vault/grok/<topic>/` — your current understanding, a resume point, open loops, and the sources it grounded in. It never writes without confirmation.
 3. **Resume.** Next time you `/grok` a known topic, it finds it and picks up from the checkpoint — across sessions and projects.
 4. **Stay fresh.** Topics can carry a review date; grok surfaces what's due for a recheck so time-sensitive knowledge doesn't silently rot.
 

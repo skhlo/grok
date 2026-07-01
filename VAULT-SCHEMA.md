@@ -14,7 +14,7 @@ The format is based on the [**Open Knowledge Format (OKF)**](https://cloud.googl
 │   ├── CHECKPOINT.md         ← where you stopped and how to resume
 │   ├── HISTORY.md            ← dated log of each revisit
 │   ├── REFERENCE.md          ← distilled learning material (optional)
-│   ├── REFERENCES.md         ← curated sources (optional)
+│   ├── REFERENCES.md         ← curated sources — the topic's grounding
 │   └── GLOSSARY.md           ← canonical terms for the topic (optional)
 └── vitest/
     └── …
