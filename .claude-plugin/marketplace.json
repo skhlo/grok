@@ -1,0 +1,13 @@
+{
+  "name": "grok",
+  "owner": {
+    "name": "skhlo"
+  },
+  "plugins": [
+    {
+      "name": "grok",
+      "source": "./",
+      "description": "Fast, source-grounded, resumable learning branches backed by a global vault."
+    }
+  ]
+}
