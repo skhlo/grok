@@ -62,7 +62,8 @@ That saved note is just Markdown. You can read it, search it, edit it, or ignore
 4. **Save only if useful.** It writes to your vault only after you say yes.
 5. **Resume later.** The next time you grok that topic, it finds the saved note first.
 
-If your tool supports session branching, this works especially well as a detour:
+If your tool supports session branching, use it to keep the learning detour separate from
+your main task:
 
 - Claude Code: use `/branch`
 - Codex: use `/fork`, or `/side` for a quick detour
@@ -169,6 +170,9 @@ The vault is meant for two readers:
 
 Each topic's `INDEX.md` is the source of truth. The root `~/Vault/grok/INDEX.md` is a generated overview of every topic. Do not edit the root index by hand.
 
+To use a different vault location or timezone, update the `~/Vault/grok` and `KST`
+instructions in [`skills/grok/SKILL.md`](skills/grok/SKILL.md).
+
 See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for the full file format.
 
 ## Origins
@@ -176,6 +180,13 @@ See [`VAULT-SCHEMA.md`](VAULT-SCHEMA.md) for the full file format.
 `grok` descends from [Matt Pocock's `/teach` skill](https://github.com/mattpocock/skills/tree/main/skills/productivity/teach).
 
 `/teach` is a deeper course-building workflow. `grok` keeps the learning principles but changes the shape: it is for the moment when you are in the middle of something and need to understand a concept now.
+
+| | `/teach` | `grok` |
+|---|---|---|
+| Moment | Planned deep learning | Mid-task concept detour |
+| Output | Course-style workspace | Markdown checkpoint |
+| State lives in | Current project workspace | Global learning vault |
+| Writes | Builds learning artifacts | Writes only after confirmation |
 
 The principles it keeps:
 
